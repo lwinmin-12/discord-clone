@@ -152,9 +152,7 @@ export const MemberModal = () => {
                         </DropdownMenuPortal>
                       </DropdownMenuSub>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                      onClick={() => onKick(ea.id)}
-                      >
+                      <DropdownMenuItem onClick={() => onKick(ea.id)}>
                         <Gavel className="h-4 w-4 mr-2" />
                         Kick
                       </DropdownMenuItem>
