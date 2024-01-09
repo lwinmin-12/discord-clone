@@ -14,6 +14,7 @@ import { Button } from "../ui/button";
 import { useOrigin } from "@/hooks/useOrigin";
 import { useState } from "react";
 import axios from "axios";
+import qs from "query-string";
 
 export const DeleteChannelModal = () => {
   const { isOpen, onClose, type, data } = useModal();
@@ -26,14 +27,26 @@ export const DeleteChannelModal = () => {
   const router = useRouter();
 
   const onClick = async () => {
-    setIsLoading(true);
+    try {
+      setIsLoading(true);
 
-    await axios.delete(`/api/servers/${server?.id}`);
+      const url = qs.stringifyUrl({
+        url: `/api/channels/${channel?.id}`,
+        query: {
+          serverId: server?.id,
+        },
+      });
 
-    onClose();
+      await axios.delete(url);
+      router.refresh();
+      // router.push("/");
 
-    router.refresh();
-    router.push("/");
+      onClose();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

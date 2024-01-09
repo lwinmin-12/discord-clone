@@ -26,10 +26,9 @@ interface ServerSearchProps {
 }
 
 const ServerSearch = ({ data }: ServerSearchProps) => {
-  //   console.log(data);
   const [open, setOpen] = useState(false);
-    const router = useRouter();
-    const params = useParams();
+  const router = useRouter();
+  const params = useParams();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -42,18 +41,23 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-
-  const onClick = ({ id, type }: { id: string, type: "channel" | "member"}) => {
+  const onClick = ({
+    id,
+    type,
+  }: {
+    id: string;
+    type: "channel" | "member";
+  }) => {
     setOpen(false);
 
     if (type === "member") {
-      return router.push(`/servers/${params?.serverId}/conversations/${id}`)
+      return router.push(`/servers/${params?.serverId}/conversations/${id}`);
     }
 
     if (type === "channel") {
-      return router.push(`/servers/${params?.serverId}/channels/${id}`)
+      return router.push(`/servers/${params?.serverId}/channels/${id}`);
     }
-  }
+  };
 
   return (
     <>
@@ -82,7 +86,7 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
                   return (
                     <CommandItem
                       key={id}
-                        onSelect={() => onClick({ id, type })}
+                      onSelect={() => onClick({ id, type })}
                     >
                       {icon}
                       <span>{name}</span>
