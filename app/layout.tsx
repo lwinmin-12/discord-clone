@@ -5,6 +5,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ModalProvider from "@/components/providers/modalProvider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
+import SocketProvider from "@/components/providers/socketProvider";
+import { QueryProvider } from "@/components/providers/queryProvider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -28,8 +30,10 @@ export default function RootLayout({
             enableSystem={false}
             storageKey="discord-theme"
           >
-            <ModalProvider />
-            {children}
+            <SocketProvider>
+              <ModalProvider />
+              <QueryProvider>{children}</QueryProvider>
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>

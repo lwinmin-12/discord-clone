@@ -19,4 +19,4 @@ function dataResponse(payload: any) {
   return NextResponse.json(payload);
 }
 
-export { unauthorizeResponse,dataResponse, errorResponse, successResponse };
+export { unauthorizeResponse, dataResponse, errorResponse, successResponse };
