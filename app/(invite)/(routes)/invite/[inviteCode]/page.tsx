@@ -18,7 +18,7 @@ const InviteCodePage = async ({ params }: InviteCodePageProps) => {
 
   if (!profile) {
     initialProfile();
-    return redirectToSignIn();
+    return redirect("/");
   }
 
   if (!params.inviteCode) {
