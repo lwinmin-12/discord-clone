@@ -124,6 +124,6 @@ export async function DELETE(
     return dataResponse(server);
   } catch (e) {
     console.log("[MEMBER_DELETE_ERROR", e);
-    errorResponse("Internal server error", 500);
+    return errorResponse("Internal server error", 500);
   }
 }

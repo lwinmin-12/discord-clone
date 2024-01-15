@@ -3,6 +3,7 @@ import { Message } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { currentProfile } from "@/lib/currentProfile";
+
 import {
   dataResponse,
   errorResponse,
@@ -81,6 +82,6 @@ export async function GET(req: Request) {
     });
   } catch (error) {
     console.log("[MESSAGES_GET]", error);
-    errorResponse("Internal server error", 500);
+     return errorResponse("Internal server error", 500);
   }
 }

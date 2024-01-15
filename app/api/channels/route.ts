@@ -54,6 +54,7 @@ export async function PATCH(req: Request) {
     return dataResponse(server);
   } catch (e) {
     console.log("[CHANNEL_UPDATE_ERROR", e);
-    errorResponse("Internal server error", 500);
+    return errorResponse("Internal server error", 500);
+
   }
 }

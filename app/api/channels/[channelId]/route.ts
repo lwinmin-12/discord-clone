@@ -120,6 +120,6 @@ export async function PATCH(
     return dataResponse(server);
   } catch (error) {
     console.log("[CHANNEL_ID_PATCH]", error);
-    errorResponse("Internal server error", 500);
+    return errorResponse("Internal server error", 500);
   }
 }
